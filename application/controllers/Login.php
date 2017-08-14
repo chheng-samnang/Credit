@@ -3,13 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 	public function __construct()
-	{		
+	{
 		parent::__construct();
 		$this->load->model('Login_m','lm');
 		$this->load->helper('security');
 	}
 	public function index()
-	{   
+	{
 		$this->form_validation->set_rules('txtUsername','User Name','required');
 		$this->form_validation->set_rules('txtPass','Password','required');
 		if($this->form_validation->run()==false)
@@ -25,8 +25,8 @@ class Login extends CI_Controller {
 			{
 				$this->session->userLogin = $username;
 				$this->session->userType = $result->user_type;
-				//$this->session->userID = $result->user_id;
-				//$this->session->userPassword = $result->user_pass;												
+				$this->session->userID = $result->user_id;
+				//$this->session->userPassword = $result->user_pass;
 				redirect("Main");
 				exit;
 			}else
@@ -34,6 +34,6 @@ class Login extends CI_Controller {
 				$data['msg'] = "Username and Password incorrect !!!";
 				$this->load->view("template/login",$data);
 			}
-		}			
+		}
 	}
 }
