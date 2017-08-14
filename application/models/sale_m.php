@@ -10,12 +10,27 @@ class Sale_m extends CI_Model
 	public function index($id="")
 	{
 		if($id=="")
-		{			
-			$query=$this->db->query("
+		{
+			$from = $this->input->post('txtFrom');			
+			$to = $this->input->post('txtTo');
+			if($from!="" && $to!="")
+			{
+				$query=$this->db->query("
 				SELECT * FROM tbl_sale as sal
-				INNER JOIN tbl_concreter as con ON sal.con_id=con.con_id				
+				INNER JOIN tbl_concreter as con ON sal.con_id=con.con_id
+				WHERE (sal.sale_date BETWEEN '{$from}' AND '{$to}')			
 				");
-			if($query->num_rows()>0){return $query->result();}			
+				if($query->num_rows()>0){return $query->result();}			
+			}
+			else
+			{
+				$query=$this->db->query("
+				SELECT * FROM tbl_sale as sal
+				INNER JOIN tbl_concreter as con ON sal.con_id=con.con_id
+				ORDER BY sal_id DESC				
+				");
+				if($query->num_rows()>0){return $query->result();}			
+			}						
 		}
 		else
 		{		

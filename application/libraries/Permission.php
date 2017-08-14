@@ -13,18 +13,18 @@ class Permission
 		}		
 	}
 	public function check_page($page='',$type='')
-	{
-		for($i=0;$i<4;$i++)
-			{
+	{		
+		for($i=0;$i<3;$i++)
+			{				
 				if($this->get_data($i,'type')==$type)
-				{					
-					if(strpos(current_url(),$page)==TRUE)
-					{
+				{
+					if(preg_match("/\b$page\b/i",current_url()))															
+					{																
 						if($this->get_data($i,$page)==0)
-						{													
-							redirect(base_url('Permissionmsg'));														
-						}
-					}					
+						{							
+							redirect(base_url('Permissionmsg'));													
+						}											
+					}																				
 				}				
 			}			
 	}
@@ -37,16 +37,16 @@ class Permission
 		return array(
 						array('type'=>'Administrator','select'=>1,'add'=>1,'edit'=>1,'delete'=>1),
 						array('type'=>'Editor','select'=>1,'add'=>0,'edit'=>1,'delete'=>0),
-						array('type'=>'Inputer','select'=>1,'add'=>1,'edit'=>0,'delete'=>0),
-						array('type'=>'Seller','select'=>0,'add'=>0,'edit'=>0,'delete'=>0)
+						array('type'=>'Inputer','select'=>1,'add'=>1,'edit'=>0,'delete'=>0)
+						//array('type'=>'Seller','select'=>0,'add'=>0,'edit'=>0,'delete'=>0)
 					);		
 	}
-	public function seller()
+	/*public function seller()
 	{
 		$CI = & get_instance();		
 		if(isset($CI->session->userType))
 		{
 			if($CI->session->userType!='Seller' && $CI->session->userType!='Administrator'){redirect(base_url('Permissionmsg'));}	
 		}		
-	}
+	}*/
 }

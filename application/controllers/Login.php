@@ -21,12 +21,12 @@ class Login extends CI_Controller {
 			$username = $this->input->post('txtUsername');
 			$pass = $this->input->post('txtPass');
 			$result = $this->lm->validateUser($username,$pass);
-			if($result!=0)
+			if($result)
 			{
 				$this->session->userLogin = $username;
 				$this->session->userType = $result->user_type;
-				$this->session->userID = $result->user_id;
-				$this->session->userPassword = $result->user_pass;												
+				//$this->session->userID = $result->user_id;
+				//$this->session->userPassword = $result->user_pass;												
 				redirect("Main");
 				exit;
 			}else

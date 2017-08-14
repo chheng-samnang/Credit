@@ -10,6 +10,7 @@ class Logout extends CI_Controller {
 	{   		
 		session_destroy();
 		$data['msg'] = 'This user has been logout successfully.';	
-		$this->load->view('template/login',$data);				
+		$this->load->view('template/login',$data);
+		
 	}
 }

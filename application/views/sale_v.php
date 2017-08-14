@@ -14,12 +14,42 @@
             <!-- /.col-lg-12 -->
         </div>
         <div class="row"><!--add and search-->
-            <div class="col-lg-12">
-                <?php if(isset($action_url[0])){ ?><a href="<?php echo base_url($action_url[0]);?>" class="btn btn-success" style="margin-bottom:5px;">Add<?php }?> <?php if(isset($page_header)){echo $page_header;}?></a>
-                <?php if(isset($msg)){echo $msg;}?>                            
-            </div>                              
-
+            <div class="col-lg-6">
+                <?php if(isset($action_url[0])){ ?><a href="<?php echo base_url($action_url[0]);?>" class="btn btn-success">Add<?php }?> <?php if(isset($page_header)){echo $page_header;}?></a>
+            </div>
+            <div class="col-lg-6">
+                <?php echo form_open(base_url('Sale'))?>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-5">                              
+                              <div class="input-group datetimepicker">
+                                 <input type="text" name="txtFrom" class="form-control datetimepicker" placeholder="From" id="txtFrom" required>
+                                 <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>                                
+                            </div>
+                          </div>
+                          <div class="col-lg-5">                              
+                              <div class="input-group datetimepicker">
+                                 <input type="text" name="txtTo" class="form-control datetimepicker" placeholder="To" id="txtTo" required>
+                                 <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>                                
+                            </div>
+                          </div>
+                          <div class="col-lg-2">
+                            <input type="submit" name="btnSubmit" value="Search" class="btn btn-primary">
+                          </div>                          
+                        </div>
+                      <div id="chartMenu"></div>                                                                         
+                  </div>
+                <?php form_close();?> 
+            </div>                            
         </div>
+        <div class="row">
+            <div class="col-lg-12"><?php if(isset($msg)){echo $msg;}?></div>
+        </div>
+
         <div class="row">
             <div class="col-lg-12"><!--table-->                        
                 <div class="panel panel-primary"><!--panel-->

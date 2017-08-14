@@ -40,7 +40,7 @@ class User extends CI_Controller {
     public function add()
 	{   				
 		$option= array('1'=>'Enable','0'=>'Disable');
-		$option1=array(''=>'Choose one','Administrator'=>'Administrator','Eeditor'=>'Editor','Inputer'=>'Inputer','Seller'=>'Seller');
+		$option1=array(''=>'Choose one','Administrator'=>'Administrator','Editor'=>'Editor','Inputer'=>'Inputer');
 		$data['ctrl'] = $this->createCtrl($row="",$option,$option1);
 		$data['action'] = 'User/add';
 		$data['pageHeader'] = $this->pageHeader;		
@@ -76,7 +76,7 @@ class User extends CI_Controller {
 	}
 	public function edit($id){
 		$option = array('1'=>'Enable','0'=>'Disable');
-		$option1=array(''=>'Choose one','Administrator'=>'Administrator','Eeditor'=>'Editor','Inputer'=>'Inputer','Seller'=>'Seller');
+		$option1=array(''=>'Choose one','Administrator'=>'Administrator','Editor'=>'Editor','Inputer'=>'Inputer');
 		 if($id!==""){
 		 	$row=$this->um->index($id);
 		 }
