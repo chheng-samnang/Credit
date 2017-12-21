@@ -9,12 +9,14 @@
                     <a href="<?php echo base_url('User');?>"><i class="glyphicon glyphicon-user"></i> User Management</a>
                 </li>
                  <li>
-                    <a href="<?php echo base_url('Concreter');?>"><i class="fa fa-users"></i> Concreter Managements</a>
+                    <a href="<?php echo base_url('Staff');?>"><i class="fa fa-users"></i> Staff Managements</a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('Sale');?>"><i class="fa fa-dashboard"></i> Credit Managements</a>
+                    <a href="<?php echo base_url('Position');?>"><i class="fa fa-dashboard"></i> Position Setup</a>
                 </li>
-
+                <li>
+                    <a href="<?php echo base_url('Department');?>"><i class="fa fa-dashboard"></i> Department Setup</a>
+                </li>
 
             </ul>
         </div>
