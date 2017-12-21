@@ -76,7 +76,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url('Main');?>"><i class="fa fa-home"></i> Credit Management System</a>
+                <a class="navbar-brand" href="<?php echo base_url('Main');?>"><i class="fa fa-home"></i> Staff ID Management System</a>
             </div>
             <!-- /.navbar-header -->
 

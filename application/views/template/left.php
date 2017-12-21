@@ -18,6 +18,10 @@
                     <a href="<?php echo base_url('Department');?>"><i class="fa fa-dashboard"></i> Department Setup</a>
                 </li>
 
+                <li>
+                    <a href="<?php echo base_url('Print');?>"><i class="fa fa-dashboard"></i> Print Card</a>
+                </li>
+
             </ul>
         </div>
         <!-- /.sidebar-collapse -->
