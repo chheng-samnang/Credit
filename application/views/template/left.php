@@ -19,7 +19,7 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo base_url('Print');?>"><i class="fa fa-dashboard"></i> Print Card</a>
+                    <a href="<?php echo base_url('Print_c');?>"><i class="fa fa-dashboard"></i> Print Card</a>
                 </li>
 
             </ul>
