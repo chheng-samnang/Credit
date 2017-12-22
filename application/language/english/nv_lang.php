@@ -18,3 +18,4 @@ $lang["menu4c"] ="Purchase CV Paid Search";
 $lang["menu5"] ="Promotion";
 $lang["menu6"] ="Contact Us";
 $lang["menu7"] ="FAQ";
+$lang["upload"] = "Upload Image"; 
