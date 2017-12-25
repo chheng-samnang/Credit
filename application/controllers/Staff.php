@@ -58,7 +58,7 @@ class Staff extends CI_Controller {
   			   	if($this->sm->user_create()==TRUE)
   			   	{
   			   		$this->session->set_flashdata('msg','Save successfully !');
-  			   		redirect('Department');
+  			   		redirect('Staff');
   			   		exit;
   			   	}
   			   }
@@ -117,10 +117,24 @@ class Staff extends CI_Controller {
 			    $st_name=$value->st_name;
 			    $desc=$value->desc;
           $st_status = $value->st_status;
+					$st_hired_date = $value->st_hired_date;
+					$st_validity = $value->st_validity;
+					$pos_id = $value->pos_id;
+					$dep_id = $value->dep_id;
           $img = isset($value->img)&&$value->img!=""?$value->img:"noimages.png";
 
 			    }
           $status = array("-1"=>"Choose one","1"=>"Enable","0"=>"Disable");
+					$getPos = $this->sm->getPosition();
+					foreach ($getPos as $key => $value) {
+						$pos[0] = 'Choose one';
+						$pos[$value->pos_id] = $value->pos_name;
+					}
+					$getDep = $this->sm->getDepartment();
+					foreach ($getDep as $key => $value) {
+						$dep[0] = 'Choose one';
+						$dep[$value->dep_id] = $value->dep_name;
+					}
           $ctrl = array(
         array(
             'type'=>'text',
@@ -143,6 +157,22 @@ class Staff extends CI_Controller {
             'label'=>'Staff Name',
           ),
 
+					array(
+	          'type'=>'dropdown',
+	          'name'=>'ddlPosition',
+	          'option'=>$pos,
+	          'class'=>'class="form-control"',
+	          'selected'=>$pos_id,
+	          'label'=>'Position'
+	        ),
+					array(
+	          'type'=>'dropdown',
+	          'name'=>'ddlDepartment',
+	          'option'=>$dep,
+	          'class'=>'class="form-control"',
+	          'selected'=>$dep_id,
+	          'label'=>'Department'
+	        ),
         array(
           'type'=>'dropdown',
           'name'=>'ddlStatus',
@@ -151,6 +181,24 @@ class Staff extends CI_Controller {
           'selected'=>$st_status,
           'label'=>'Status'
         ),
+				array(
+						'type'=>'text',
+						'name'=>'txtHiredDate',
+						'id'=>'txtHiredDate',
+						'placeholder'=>'Click to pick a date',
+						'class'=>'form-control datetimepicker',
+						'value'=>set_value("txtHiredDate",$st_hired_date),
+						'label'=>'Hired Date'
+					),
+					array(
+							'type'=>'text',
+							'name'=>'txtValidity',
+							'id'=>'txtValidity',
+							'placeholder'=>'Click to pick a date',
+							'class'=>'form-control datetimepicker',
+							'value'=>set_value("txtValidity",$st_validity),
+							'label'=>'Validity'
+						),
         array(
           'type'=>'upload',
           'name'=>'txtUpload',
@@ -170,6 +218,16 @@ class Staff extends CI_Controller {
 			}else
 			{
         $status = array("-1"=>"Choose one","1"=>"Enable","0"=>"Disable");
+				$getPos = $this->sm->getPosition();
+				foreach ($getPos as $key => $value) {
+					$pos[0] = 'Choose one';
+					$pos[$value->pos_id] = $value->pos_name;
+				}
+				$getDep = $this->sm->getDepartment();
+				foreach ($getDep as $key => $value) {
+					$dep[0] = 'Choose one';
+					$dep[$value->dep_id] = $value->dep_name;
+				}
         $ctrl = array(
                     array(
                         'type'=>'text',
@@ -190,7 +248,20 @@ class Staff extends CI_Controller {
                         'value'=>set_value("txtStName"),
                         'label'=>'Staff Name',
                       ),
-
+											array(
+							          'type'=>'dropdown',
+							          'name'=>'ddlPosition',
+							          'option'=>$pos,
+							          'class'=>'class="form-control"',
+							          'label'=>'Position'
+							        ),
+											array(
+							          'type'=>'dropdown',
+							          'name'=>'ddlDepartment',
+							          'option'=>$dep,
+							          'class'=>'class="form-control"',
+							          'label'=>'Department'
+							        ),
                     array(
                       'type'=>'dropdown',
                       'name'=>'ddlStatus',
@@ -198,6 +269,24 @@ class Staff extends CI_Controller {
                       'class'=>'class="form-control"',
                       'label'=>'Status'
                     ),
+										array(
+						            'type'=>'text',
+						            'name'=>'txtHiredDate',
+						            'id'=>'txtHiredDate',
+						            'placeholder'=>'Click to pick a date',
+						            'class'=>'form-control datetimepicker',
+						            'value'=>set_value("txtHiredDate"),
+						            'label'=>'Hired Date'
+						          ),
+											array(
+													'type'=>'text',
+													'name'=>'txtValidity',
+													'id'=>'txtValidity',
+													'placeholder'=>'Click to pick a date',
+													'class'=>'form-control datetimepicker',
+													'value'=>set_value("txtValidity"),
+													'label'=>'Validity Date'
+												),
                     array(
                       'type'=>'upload',
                       'name'=>'txtUpload',

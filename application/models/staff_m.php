@@ -40,6 +40,10 @@ class staff_m extends CI_Model {
               'desc'=>$this->input->post('txtDesc'),
               'st_status'=>$this->input->post('ddlStatus'),
               'img'=>$this->input->post('txtUpload'),
+              'st_hired_date'=>$this->input->post('txtHiredDate'),
+              'st_validity'=>$this->input->post('txtValidity'),
+              'pos_id'=>$this->input->post('ddlPosition'),
+              'dep_id'=>$this->input->post('ddlDepartment'),
               'user_crea'=>$userLogin,
               'date_crea'=>date('Y-m-d')
             );
@@ -56,7 +60,11 @@ class staff_m extends CI_Model {
                     'st_name'=>$this->input->post('txtStName'),
                     'st_status'=>$this->input->post('ddlStatus'),
                     'img'=>$this->input->post('txtUpload'),
+                    'st_hired_date'=>$this->input->post('txtHiredDate'),
+                    'st_validity'=>$this->input->post('txtValidity'),
                     'desc'=>$this->input->post('txtDesc'),
+                    'pos_id'=>$this->input->post('ddlPosition'),
+                    'dep_id'=>$this->input->post('ddlDepartment'),
                     'user_updt'=>$this->session->userLogin,
                     'date_updt'=>date('Y-m-d')
                   );
@@ -64,7 +72,11 @@ class staff_m extends CI_Model {
                   $data = array(
                   'st_name'=>$this->input->post('txtStName'),
                   'st_status'=>$this->input->post('ddlStatus'),
+                  'st_hired_date'=>$this->input->post('txtHiredDate'),
+                  'st_validity'=>$this->input->post('txtValidity'),
                   'desc'=>$this->input->post('txtDesc'),
+                  'pos_id'=>$this->input->post('ddlPosition'),
+                  'dep_id'=>$this->input->post('ddlDepartment'),
                   'user_updt'=>$this->session->userLogin,
                   'date_updt'=>date('Y-m-d')
                 );
@@ -80,6 +92,26 @@ class staff_m extends CI_Model {
   						$this->db->where('st_id',$st_id);
   						$result = $this->db->delete('tbl_staf');
   	    }
+
+        public function getPosition()
+        {
+          $query = $this->db->get('tbl_position');
+          if($query->num_rows()>0){
+            return $query->result();
+          }else{
+            return array();
+          }
+        }
+
+        public function getDepartment()
+        {
+          $query = $this->db->get('tbl_department');
+          if($query->num_rows()>0){
+            return $query->result();
+          }else{
+            return array();
+          }
+        }
 
 }
 

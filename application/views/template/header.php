@@ -60,6 +60,10 @@
         #page-wrapper{background-color:#fbfbfb;}
         .panel-default{box-shadow: 2px 5px 5px #888888;}
         .panel-primary{box-shadow: 2px 5px 5px #888888;}
+        @media print
+        {
+            * {-webkit-print-color-adjust:exact;}
+        }
     </style>
 
 </head>
